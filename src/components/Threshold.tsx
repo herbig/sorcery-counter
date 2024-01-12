@@ -35,10 +35,10 @@ export const Threshold = (props: Props) => {
 
     return (
       <Box {...props} position={'relative'} h='50vw'>
-        <Image src={icon} position={'absolute'} w='50%' opacity={'50%'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} />
-        <Text fontSize='xxx-large' position={'absolute'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</Text>
         <Button variant='ghost' position={'absolute'} h='50%' w='full' bottom={'50%'} onClick={() => setAmount(amount + 1)}>▲</Button>
         <Button variant='ghost' position={'absolute'} h='50%' w='full' top='50%' onClick={() => setAmount(amount === 0 ? 0 : amount - 1)}>▼</Button>
+        <Image src={icon} position={'absolute'} w='50%' opacity={'50%'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} />
+        <Text fontSize='xxx-large' position={'absolute'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</Text>
       </Box>
     )
 }
