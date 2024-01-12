@@ -1,6 +1,7 @@
 import {
   ChakraProvider,
   SimpleGrid,
+  ThemeConfig,
   extendTheme,
 } from "@chakra-ui/react"
 import { Elem, Threshold } from "./components/Threshold";
@@ -8,10 +9,12 @@ import { Life } from "./components/Life";
 import { PStone } from "./components/PStone";
 import { Mana } from "./components/Mana";
 
-const theme = extendTheme({
+const config: ThemeConfig = {
   initialColorMode: 'dark',
   useSystemColorMode: false,
-})
+}
+
+const theme = extendTheme({ config })
 
 export const App = () => (
   <ChakraProvider theme={theme}>
