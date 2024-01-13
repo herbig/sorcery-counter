@@ -39,7 +39,7 @@ export const Threshold = (props: Props) => {
         <Image pointerEvents='none' src={icon} position={'absolute'} w='50%' opacity={'40%'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} />
         <BaseButton bottom={'50%'} onClick={() => setAmount(amount + 1)}>▲</BaseButton>
         <BaseButton top='50%' onClick={() => setAmount(amount === 0 ? 0 : amount - 1)}>▼</BaseButton>
-        <BaseText fontSize='xxx-large' top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
+        <BaseText top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
       </Box>
     )
 }

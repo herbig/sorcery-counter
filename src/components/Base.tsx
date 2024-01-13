@@ -5,5 +5,5 @@ export const BaseButton = (props: ButtonProps) => (
 )
 
 export const BaseText = (props: TextProps) => (
-    <Text textShadow='4px 4px #000' pointerEvents='none' position='absolute' {...props} />
+    <Text fontSize='xxx-large' textShadow='4px 4px #000' pointerEvents='none' position='absolute' {...props} />
 )

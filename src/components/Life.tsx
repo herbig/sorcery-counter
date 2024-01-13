@@ -16,7 +16,7 @@ export const Life = (props: Props) => {
       <BaseButton bottom='50%' onClick={() => setAmount(amount === MAX_LIFE ? MAX_LIFE : amount + 1)}>▲</BaseButton>
       <BaseButton top='50%' onClick={() => setAmount(amount - 1 < 0 ? 0 : amount - 1)}>▼</BaseButton>
       <BaseText ms='0.8rem' mt='0.5rem' fontSize='large'>{props.title}</BaseText>
-      <BaseText fontSize='xxx-large' top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
+      <BaseText top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
     </Box>
   )
 }
