@@ -9,7 +9,6 @@ import { Life } from "./components/Life";
 import { PStone } from "./components/PStone";
 import { Mana } from "./components/Mana";
 import { useWakeLock } from 'react-screen-wake-lock';
-import { useEffect } from "react";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -21,9 +20,7 @@ const theme = extendTheme({ config })
 export const App = () => {
 
   const { request } = useWakeLock();
-  useEffect(() => {    
-    request();  
-  });
+  request();
 
   return (
     <ChakraProvider theme={theme}>
