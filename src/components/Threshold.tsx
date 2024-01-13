@@ -1,9 +1,10 @@
-import { Button, Text, Image, Box, BoxProps } from "@chakra-ui/react";
+import { Image, Box, BoxProps } from "@chakra-ui/react";
 import { useState } from "react";
 import air from "../assets/air.png"
 import earth from "../assets/earth.png"
 import fire from "../assets/fire.png"
 import water from "../assets/water.png"
+import { BaseButton, BaseText } from "./Base";
 
 export enum Elem {
     AIR, EARTH, FIRE, WATER
@@ -36,9 +37,9 @@ export const Threshold = (props: Props) => {
     return (
       <Box {...props} position={'relative'} h='40vw'>
         <Image pointerEvents='none' src={icon} position={'absolute'} w='50%' opacity={'40%'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} />
-        <Button textShadow='3px 3px #000' variant='ghost' position={'absolute'} h='50%' w='full' bottom={'50%'} onClick={() => setAmount(amount + 1)}>▲</Button>
-        <Button textShadow='3px 3px #000' variant='ghost' position={'absolute'} h='50%' w='full' top='50%' onClick={() => setAmount(amount === 0 ? 0 : amount - 1)}>▼</Button>
-        <Text textShadow='3px 3px #000' pointerEvents='none' fontSize='xxx-large' position={'absolute'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</Text>
+        <BaseButton bottom={'50%'} onClick={() => setAmount(amount + 1)}>▲</BaseButton>
+        <BaseButton top='50%' onClick={() => setAmount(amount === 0 ? 0 : amount - 1)}>▼</BaseButton>
+        <BaseText fontSize='xxx-large' top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
       </Box>
     )
 }

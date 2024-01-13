@@ -19,7 +19,7 @@ const theme = extendTheme({ config })
 export const App = () => (
   <ChakraProvider theme={theme}>
     <SimpleGrid columns={2} h="100vh" w="full" maxW='30rem' userSelect='none'>
-      <Life title = 'You' />
+      <Life title='You' />
       <Life title='Me' />
       <Threshold element={Elem.AIR} />
       <Threshold element={Elem.EARTH} />
