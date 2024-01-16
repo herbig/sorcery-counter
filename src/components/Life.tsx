@@ -1,8 +1,8 @@
-import { BoxProps, Box } from "@chakra-ui/react";
+import { GridItem, GridItemProps, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { BaseButton, BaseText } from "./Base";
 
-interface Props extends BoxProps {
+interface Props extends GridItemProps {
     title: string;
 }
 
@@ -12,11 +12,11 @@ export const Life = (props: Props) => {
   const [amount, setAmount] = useState<number>(MAX_LIFE);
 
   return (
-    <Box {...props} position={'relative'} h='40vw'>
-      <BaseButton bottom='50%' onClick={() => setAmount(amount === MAX_LIFE ? MAX_LIFE : amount + 1)}>▲</BaseButton>
-      <BaseButton top='50%' onClick={() => setAmount(amount - 1 < 0 ? 0 : amount - 1)}>▼</BaseButton>
-      <BaseText ms='0.8rem' mt='0.5rem' fontSize='large'>{props.title}</BaseText>
+    <GridItem {...props} position={'relative'} h='12rem'>
+      <BaseButton bottom='50%' onClick={() => setAmount(amount + 1 > MAX_LIFE ? 0 : amount + 1)} />
+      <BaseButton top='50%' onClick={() => setAmount(amount - 1 < 0 ? MAX_LIFE : amount - 1)} />
+      <Text as='b' ms='1.25rem' mt='0.5rem' fontSize='small' pointerEvents='none' position='absolute'>{props.title}</Text>
       <BaseText top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
-    </Box>
+    </GridItem>
   )
 }
