@@ -35,11 +35,11 @@ export const Threshold = (props: Props) => {
     }
 
     return (
-      <GridItem {...props} position={'relative'} h='10rem'>
-        <Image pointerEvents='none' src={icon} position={'absolute'} w='50%' opacity={'40%'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} />
+      <GridItem {...props} position={'relative'} h='9rem'>
+        <Image pointerEvents='none' src={icon} position={'absolute'} w='50%' opacity={'50%'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} />
         <BaseButton bottom={'50%'} onClick={() => setAmount(amount + 1)} />
         <BaseButton top='50%' onClick={() => setAmount(amount === 0 ? 0 : amount - 1)} />
-        <BaseText top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
+        <BaseText fontSize='6xl' top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
       </GridItem>
     )
 }

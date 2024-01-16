@@ -6,7 +6,7 @@ export const Mana = (props: GridItemProps) => {
     const [current, setCurrent] = useState<number>(0);
     const [max, setMax] = useState<number>(0);
     return (
-      <GridItem {...props} position={'relative'} h='10rem'>
+      <GridItem {...props} position={'relative'} h='9rem'>
         <BaseButton w='50%' bottom='50%' onClick={() => setCurrent(current + 1)} />
         <BaseButton w='50%' top='50%' onClick={() => setCurrent(current - 1 < 0 ? max : current - 1)} />
         <BaseButton w='50%' bottom='50%' left='50%' onClick={() => {setMax(max + 1); setCurrent(current + 1)}} />

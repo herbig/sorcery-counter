@@ -11,7 +11,7 @@ import { Mana } from "./components/Mana";
 import { useWakeLock } from 'react-screen-wake-lock';
 import { AppBar } from "./components/AppBar";
 import { GridTitle } from "./components/GridTitle";
-import { FaRecycle } from "react-icons/fa";
+import { MdOutlineRefresh } from "react-icons/md";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -27,17 +27,21 @@ export const App = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <AppBar title='Sorcery Counter' buttons={
-        [
-          {
-            icon: FaRecycle,
-            onClick: () => {
-              window.location.reload();
-            },
-            ariaLabel: 'Refresh'
-          }
-        ]
-      } />
+      <AppBar 
+        title='Sorcery Counter' 
+        buttons={
+          [
+            {
+              icon: MdOutlineRefresh,
+              onClick: () => {
+                window.location.reload();
+              },
+              ariaLabel: 'Refresh'
+            }
+          ]
+      } 
+        maxW='30rem'
+      />
       <Grid
         templateRows='repeat(10, 0fr)'
         templateColumns='repeat(4, 1fr)'
