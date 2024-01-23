@@ -1,17 +1,16 @@
 import {
+  Box,
   ChakraProvider,
-  Grid,
   ThemeConfig,
   extendTheme,
 } from "@chakra-ui/react"
-import { Elem, Threshold } from "./components/Threshold";
-import { Life } from "./components/Life";
-import { PStone } from "./components/PStone";
-import { Mana } from "./components/Mana";
+import { Elem } from "./components/Threshold";
 import { useWakeLock } from 'react-screen-wake-lock';
 import { AppBar } from "./components/AppBar";
-import { GridTitle } from "./components/GridTitle";
 import { MdOutlineRefresh } from "react-icons/md";
+import { ThresholdRow } from "./components/ThresholdRow";
+import { ManaRow } from "./components/ManaRow";
+import { LifeRow } from "./components/LifeRow";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -42,26 +41,16 @@ export const App = () => {
       } 
         maxW='30rem'
       />
-      <Grid
-        templateRows='repeat(10, 0fr)'
-        templateColumns='repeat(4, 1fr)'
+      <Box
         h="100vh" 
         w="full" 
         maxW='30rem'
+        p='1.25rem'
       >
-        <GridTitle title='Life Totals' mt='1.25rem' />
-        <Life title='You' colSpan={2} />
-        <Life title='Me' colSpan={2} />
-        <GridTitle title='Threshold' />
-        <Threshold colSpan={2} element={Elem.AIR} />
-        <Threshold colSpan={2} element={Elem.EARTH} />
-        <Threshold colSpan={2} element={Elem.FIRE} />
-        <Threshold colSpan={2} element={Elem.WATER} />
-        <GridTitle title='Mana Count' />
-        <Mana colSpan={3} />
-        <PStone colSpan={1} />
-
-      </Grid>
+        <LifeRow you={true} />
+        <ThresholdRow elems={[Elem.AIR, Elem.EARTH, Elem.FIRE, Elem.WATER]} />
+        <ManaRow pstone={true} />
+      </Box>
     </ChakraProvider>
   )
 }

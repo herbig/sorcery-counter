@@ -1,12 +1,18 @@
-import { Center, GridItem, GridItemProps } from "@chakra-ui/react";
+import { Box, Center, IconButton } from "@chakra-ui/react";
 import { useState } from "react";
 import { BaseButton, BaseText } from "./Base";
+import { MdOutlineRefresh } from "react-icons/md";
+import { PStone } from "./PStone";
 
-export const Mana = (props: GridItemProps) => {
+interface Props {
+  pstone: boolean;
+}
+
+export const Mana = (props: Props) => {
     const [current, setCurrent] = useState<number>(0);
     const [max, setMax] = useState<number>(0);
     return (
-      <GridItem {...props} position={'relative'} h='9rem'>
+      <Box position={'relative'} h='9rem'>
         <BaseButton w='50%' bottom='50%' onClick={() => setCurrent(current + 1)} />
         <BaseButton w='50%' top='50%' onClick={() => setCurrent(current - 1 < 0 ? max : current - 1)} />
         <BaseButton w='50%' bottom='50%' left='50%' onClick={() => {setMax(max + 1); setCurrent(current + 1)}} />
@@ -14,6 +20,8 @@ export const Mana = (props: GridItemProps) => {
         <Center h='100%'>
           <BaseText>{current} / {max}</BaseText>
         </Center>
-      </GridItem>
+        <IconButton ms='3%' onClick={() => {setCurrent(max)}} bottom='62%' aria-label='Refresh Mana' icon={<MdOutlineRefresh />} />
+        {props.pstone && <PStone bottom='50%' left='90%' w='30%' />}
+      </Box>
     )
 }

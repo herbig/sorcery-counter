@@ -1,4 +1,4 @@
-import { Image, GridItemProps, GridItem } from "@chakra-ui/react";
+import { Image, BoxProps, Box } from "@chakra-ui/react";
 import { useState } from "react";
 import air from "../assets/air.png"
 import earth from "../assets/earth.png"
@@ -10,7 +10,7 @@ export enum Elem {
     AIR, EARTH, FIRE, WATER
 }
 
-interface Props extends GridItemProps {
+interface Props extends BoxProps {
     element: Elem;
 }
 
@@ -35,11 +35,11 @@ export const Threshold = (props: Props) => {
     }
 
     return (
-      <GridItem {...props} position={'relative'} h='9rem'>
-        <Image pointerEvents='none' src={icon} position={'absolute'} w='50%' opacity={'50%'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} />
+      <Box position={'relative'} h='9rem' {...props}>
+        <Image pointerEvents='none' src={icon} position={'absolute'} w='20vw' opacity={'55%'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} />
         <BaseButton bottom={'50%'} onClick={() => setAmount(amount + 1)} />
         <BaseButton top='50%' onClick={() => setAmount(amount === 0 ? 0 : amount - 1)} />
-        <BaseText fontSize='6xl' top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
-      </GridItem>
+        <BaseText fontSize='5xl' top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>
+      </Box>
     )
 }
