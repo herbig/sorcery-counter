@@ -7,10 +7,12 @@ import {
 import { Elem } from "./components/Threshold";
 import { useWakeLock } from 'react-screen-wake-lock';
 import { APPBAR_HEIGHT, AppBar } from "./components/AppBar";
-import { MdOutlineRefresh } from "react-icons/md";
+import { MdOutlineRefresh, MdSettings } from "react-icons/md";
 import { ThresholdRow } from "./components/ThresholdRow";
 import { ManaRow } from "./components/ManaRow";
 import { LifeRow } from "./components/LifeRow";
+import { CustomizeModal, UIConfig } from "./components/CustomizeModal";
+import { useState } from "react";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -24,6 +26,15 @@ export const App = () => {
   const { request } = useWakeLock();
   request();
 
+  const [showConfig, setShowConfig] = useState<boolean>(false);
+
+  const [uiConfig, setUIConfig] = useState<UIConfig>({
+    showLife: true,
+    showYourLife: true,
+    elems: [Elem.AIR, Elem.EARTH, Elem.FIRE, Elem.WATER],
+    showPStone: true
+  });
+
   return (
     <ChakraProvider theme={theme}>
       <AppBar 
@@ -36,6 +47,13 @@ export const App = () => {
                 window.location.reload();
               },
               ariaLabel: 'Refresh'
+            },
+            {
+              icon: MdSettings,
+              onClick: () => {
+                setShowConfig(true);
+              },
+              ariaLabel: 'Customize'
             }
           ]
       } 
@@ -47,10 +65,22 @@ export const App = () => {
         maxW='30rem'
         p='1.25rem'
       >
-        <LifeRow you={true} />
-        <ThresholdRow elems={[Elem.AIR, Elem.EARTH, Elem.FIRE, Elem.WATER]} />
-        <ManaRow pstone={true} />
+        {uiConfig.showLife && <LifeRow you={uiConfig.showYourLife} />}
+        <ThresholdRow elems={uiConfig.elems} />
+        <ManaRow pstone={uiConfig.showPStone} />
+
       </Box>
+      <CustomizeModal 
+        uiConfig={uiConfig} 
+        shown={showConfig} 
+        onCancelClick={() => {
+          setShowConfig(false);
+        }} 
+        onConfirmClick={(config) => {
+          setUIConfig(config);
+          setShowConfig(false);
+        }}
+      />
     </ChakraProvider>
   )
 }
