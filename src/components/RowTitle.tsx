@@ -6,7 +6,7 @@ interface Props extends BoxProps {
 
 export const RowTitle = (props: Props) => {
     return (
-        <Box h='1.5rem' {...props}>
+        <Box {...props}>
             <Text fontSize='medium' as="b">{props.title}</Text>
             <Divider />
         </Box>
