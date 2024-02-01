@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react"
 import { Elem } from "./components/Threshold";
 import { useWakeLock } from 'react-screen-wake-lock';
-import { AppBar } from "./components/AppBar";
+import { APPBAR_HEIGHT, AppBar } from "./components/AppBar";
 import { MdOutlineRefresh } from "react-icons/md";
 import { ThresholdRow } from "./components/ThresholdRow";
 import { ManaRow } from "./components/ManaRow";
@@ -42,7 +42,7 @@ export const App = () => {
         maxW='30rem'
       />
       <Box
-        h="100vh" 
+        h={`calc(100vh - ${APPBAR_HEIGHT})`}
         w="full" 
         maxW='30rem'
         p='1.25rem'
