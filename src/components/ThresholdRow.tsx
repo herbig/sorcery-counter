@@ -14,8 +14,8 @@ export const ThresholdRow = (props: Props) => {
         <Box {...props}>
             <RowTitle title='Threshold' />
             <Flex h='9rem'>
-                {props.elems.map((i, element) => (
-                    <Threshold key={i} element={element} w={widthPercent} />
+                {props.elems.map((element) => (
+                    <Threshold key={Elem[element].toString()} element={element} w={widthPercent} />
                 ))}
             </Flex>
         </Box>
