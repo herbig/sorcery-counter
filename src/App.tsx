@@ -1,6 +1,6 @@
 import {
+  Box,
   ChakraProvider,
-  Flex,
   ThemeConfig,
   extendTheme,
 } from "@chakra-ui/react"
@@ -13,7 +13,6 @@ import { ManaRow } from "./components/ManaRow";
 import { LifeRow } from "./components/LifeRow";
 import { CustomizeModal, UIConfig } from "./components/CustomizeModal";
 import { useState } from "react";
-import { ReactSketchCanvas } from 'react-sketch-canvas';
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -60,22 +59,17 @@ export const App = () => {
       } 
         maxW='30rem'
       />
-      <Flex
+      <Box
         h={`calc(100vh - ${APPBAR_HEIGHT})`}
         w="full" 
         maxW='30rem'
         p='1.25rem'
-        flexDir='column'
       >
         {uiConfig.showLife && <LifeRow you={uiConfig.showYourLife} />}
         <ThresholdRow elems={uiConfig.elems} />
         <ManaRow pstone={uiConfig.showPStone} />
-        <ReactSketchCanvas
-          style={{ border: '0.07rem solid #353943' }}
-          strokeWidth={1}
-          canvasColor="#1A202C"
-          strokeColor="white" />
-      </Flex>
+
+      </Box>
       <CustomizeModal 
         uiConfig={uiConfig} 
         shown={showConfig} 
