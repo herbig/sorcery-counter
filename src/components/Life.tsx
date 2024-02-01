@@ -12,7 +12,7 @@ export const Life = (props: Props) => {
   const [amount, setAmount] = useState<number>(MAX_LIFE);
 
   return (
-    <Box position={'relative'} h='9rem' {...props}>
+    <Box position={'relative'} h='9.5rem' {...props}>
       <BaseButton bottom='50%' onClick={() => setAmount(amount + 1 > MAX_LIFE ? 0 : amount + 1)} />
       <BaseButton top='50%' onClick={() => setAmount(amount - 1 < 0 ? MAX_LIFE : amount - 1)} />
       <Text as='b' ms='1.25rem' mt='0.5rem' fontSize='small' pointerEvents='none' position='absolute'>{props.title}</Text>
