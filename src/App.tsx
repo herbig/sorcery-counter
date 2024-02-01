@@ -1,6 +1,6 @@
 import {
+  Box,
   ChakraProvider,
-  Flex,
   ThemeConfig,
   extendTheme,
 } from "@chakra-ui/react"
@@ -12,8 +12,7 @@ import { ThresholdRow } from "./components/ThresholdRow";
 import { ManaRow } from "./components/ManaRow";
 import { LifeRow } from "./components/LifeRow";
 import { CustomizeModal, UIConfig } from "./components/CustomizeModal";
-import { useEffect, useState } from "react";
-import CanvasDraw from "react-canvas-draw";
+import { useState } from "react";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -35,13 +34,6 @@ export const App = () => {
     elems: [Elem.AIR, Elem.EARTH, Elem.FIRE, Elem.WATER],
     showPStone: true
   });
-
-  // a workaround for a this bug, which crashes on first render:
-  // https://github.com/embiem/react-canvas-draw/issues/153
-  const [canvasHeight, setCanvasHeight] = useState<string>();
-  useEffect(() => {    
-    setCanvasHeight(`calc(100vh - ${APPBAR_HEIGHT} - 22rem - 2.5rem - ${uiConfig.showLife ? '11rem' : '0rem'})`) 
-  }, [uiConfig.showLife]);
 
   return (
     <ChakraProvider theme={theme}>
@@ -67,29 +59,17 @@ export const App = () => {
       } 
         maxW='30rem'
       />
-      <Flex
+      <Box
         h={`calc(100vh - ${APPBAR_HEIGHT})`}
         w="full" 
         maxW='30rem'
         p='1.25rem'
-        flexDir='column'
       >
         {uiConfig.showLife && <LifeRow you={uiConfig.showYourLife} />}
         <ThresholdRow elems={uiConfig.elems} />
         <ManaRow pstone={uiConfig.showPStone} />
-        <Flex 
-          flexGrow={1}
-          border={'0.07rem solid #353943'}>
-          <CanvasDraw
-            style={{flexGrow: 1}}
-            canvasHeight={canvasHeight}
-            lazyRadius={0}
-            brushColor='white'
-            brushRadius={0.5}
-            backgroundColor="#1A202C"
-            hideGrid={true} />
-        </Flex>
-      </Flex>
+
+      </Box>
       <CustomizeModal 
         uiConfig={uiConfig} 
         shown={showConfig} 
