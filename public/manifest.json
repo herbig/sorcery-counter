@@ -1,8 +1,6 @@
 {
   "short_name": "Sorcery Mana Counter",
   "name": "Sorcery Mana Counter",
-  "start_url": "/counter/",
-  "scope": "/counter/",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +18,7 @@
       "sizes": "512x512"
     }
   ],
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#1A202C",
   "background_color": "#1A202C"
