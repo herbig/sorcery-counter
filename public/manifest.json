@@ -1,8 +1,8 @@
 {
   "short_name": "Sorcery Mana Counter",
   "name": "Sorcery Mana Counter",
-  "start_url": "/counter/",
-  "scope": "/counter/",
+  "start_url": "https://fourcores.xyz/counter",
+  "scope": "https://fourcores.xyz/counter",
   "icons": [
     {
       "src": "favicon.ico",
