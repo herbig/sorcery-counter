@@ -13,7 +13,6 @@ import { ManaRow } from "./components/ManaRow";
 import { LifeRow } from "./components/LifeRow";
 import { CustomizeModal, UIConfig } from "./components/CustomizeModal";
 import { useEffect, useState } from "react";
-import CanvasDraw from "react-canvas-draw";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -25,23 +24,25 @@ const theme = extendTheme({ config })
 export const App = () => {
 
   const { request } = useWakeLock();
-  request();
+  useEffect(() => {
+    request();
+  }, [request]);
 
   const [showConfig, setShowConfig] = useState<boolean>(false);
+
+  // a simple way to refresh components via the refresh button
+  const [resetCount, setResetCount] = useState<number>(0);
 
   const [uiConfig, setUIConfig] = useState<UIConfig>({
     showLife: true,
     showYourLife: true,
-    elems: [Elem.AIR, Elem.EARTH, Elem.FIRE, Elem.WATER],
+    elems: [Elem.EARTH, Elem.AIR, Elem.FIRE, Elem.WATER],
     showPStone: true
   });
 
-  // a workaround for a this bug, which crashes on first render:
-  // https://github.com/embiem/react-canvas-draw/issues/153
-  const [canvasHeight, setCanvasHeight] = useState<string>();
-  useEffect(() => {    
-    setCanvasHeight(`calc(100vh - ${APPBAR_HEIGHT} - 22rem - 2.5rem - ${uiConfig.showLife ? '11rem' : '0rem'})`) 
-  }, [uiConfig.showLife]);
+  const refresh = () => {
+    setResetCount(current => current + 1);
+  };
 
   return (
     <ChakraProvider theme={theme}>
@@ -52,7 +53,7 @@ export const App = () => {
             {
               icon: MdOutlineRefresh,
               onClick: () => {
-                window.location.reload();
+                refresh();
               },
               ariaLabel: 'Refresh'
             },
@@ -73,22 +74,11 @@ export const App = () => {
         maxW='30rem'
         p='1.25rem'
         flexDir='column'
+        key={resetCount}
       >
         {uiConfig.showLife && <LifeRow you={uiConfig.showYourLife} />}
         <ThresholdRow elems={uiConfig.elems} />
         <ManaRow pstone={uiConfig.showPStone} />
-        <Flex 
-          flexGrow={1}
-          border={'0.07rem solid #353943'}>
-          <CanvasDraw
-            style={{flexGrow: 1}}
-            canvasHeight={canvasHeight}
-            lazyRadius={0}
-            brushColor='white'
-            brushRadius={0.5}
-            backgroundColor="#1A202C"
-            hideGrid={true} />
-        </Flex>
       </Flex>
       <CustomizeModal 
         uiConfig={uiConfig} 

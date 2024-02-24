@@ -14,8 +14,11 @@ export const ThresholdRow = (props: Props) => {
         <Box {...props}>
             <RowTitle title='Threshold' />
             <Flex h='9.5rem'>
-                {props.elems.map((element) => (
-                    <Threshold key={Elem[element].toString()} element={element} w={widthPercent} />
+                {/* preserve the enum order, not the prop ordering */}
+                {Object.values(Elem).map((element) => (
+                    props.elems.includes(element as Elem) ? (
+                      <Threshold key={element} element={element as Elem} w={widthPercent} />
+                    ) : null
                 ))}
             </Flex>
         </Box>

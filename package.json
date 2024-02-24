@@ -15,7 +15,6 @@
     "@types/react-dom": "^18.2.18",
     "framer-motion": "^6.5.1",
     "react": "^18.2.0",
-    "react-canvas-draw": "^1.2.1",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-screen-wake-lock": "^3.0.2",
@@ -43,8 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/react-canvas-draw": "^1.2.3"
   }
 }
