@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Checkbox, VStack, Divider } from '@chakra-ui/react';
 import { Elem } from './Threshold';
 import { useState } from 'react';
 
 export interface UIConfig {
+  showDice: boolean,
   showLife: boolean;
   showYourLife: boolean;
   elems: Elem[];
@@ -31,6 +31,16 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
         <ModalCloseButton />
         <ModalBody>
           <VStack alignItems='start'>
+            <Checkbox
+              isChecked={newConfig.showDice}
+              onChange={(e) => {
+                setNewConfig({
+                  ...newConfig,
+                  showDice: e.target.checked,
+                });
+              }}>
+              Dice
+            </Checkbox>
             <Checkbox
               isChecked={newConfig.showLife}
               onChange={(e) => {

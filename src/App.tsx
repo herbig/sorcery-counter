@@ -13,6 +13,7 @@ import { ManaRow } from "./components/ManaRow";
 import { LifeRow } from "./components/LifeRow";
 import { CustomizeModal, UIConfig } from "./components/CustomizeModal";
 import { useEffect, useState } from "react";
+import { DiceRow } from "./components/DiceRow";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -34,6 +35,7 @@ export const App = () => {
   const [resetCount, setResetCount] = useState<number>(0);
 
   const [uiConfig, setUIConfig] = useState<UIConfig>({
+    showDice: true,
     showLife: true,
     showYourLife: true,
     elems: [Elem.EARTH, Elem.AIR, Elem.FIRE, Elem.WATER],
@@ -76,6 +78,7 @@ export const App = () => {
         flexDir='column'
         key={resetCount}
       >
+        {uiConfig.showDice && <DiceRow />}
         {uiConfig.showLife && <LifeRow you={uiConfig.showYourLife} />}
         <ThresholdRow elems={uiConfig.elems} />
         <ManaRow pstone={uiConfig.showPStone} />
