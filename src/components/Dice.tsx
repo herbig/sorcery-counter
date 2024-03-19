@@ -12,7 +12,8 @@ const diceBox = new DiceBox(
   "#dice-box", // target DOM element to inject the canvas for rendering
   {
     id: "dice-canvas", // canvas element id
-    assetPath: "/counter/assets/dice-box/",
+    // TODO fix this fourcores redirect issue
+    assetPath: (process.env.NODE_ENV !== 'development' ? "/counter" : '') + "/assets/dice-box/",
     startingHeight: 8,
     throwForce: 6,
     spinForce: 5,
@@ -34,7 +35,7 @@ diceBox.init().then(() => {
 
 const Die = (props: ImageProps) => {
     return (
-        <Button variant='ghost' h='50%' borderRadius='0'><Image w='3.5rem' sx={{filter: 'brightness(0) invert(1)'}} opacity={'70%'} {...props} /></Button>
+        <Button variant='ghost' h='50%' borderRadius='0'><Image w='4rem' sx={{filter: 'brightness(0) invert(1)'}} opacity={'70%'} {...props} /></Button>
     )
 }
 
