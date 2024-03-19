@@ -1,5 +1,5 @@
 import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Checkbox, VStack, Divider } from '@chakra-ui/react';
-import { Elem } from './Threshold';
+import { Elem } from './rows/Threshold';
 import { useState } from 'react';
 
 export interface UIConfig {

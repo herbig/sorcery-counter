@@ -1,7 +1,7 @@
 import { Image, Alert, AlertIcon, Box, BoxProps, Spacer, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { BaseButton, BaseText } from "./Base";
-import skull from "../assets/skull.png"
+import { BaseButton, BaseText } from "../Base";
+import skull from "../../assets/skull.png"
 
 interface Props extends BoxProps {
     title: string;
@@ -19,7 +19,7 @@ export const Life = (props: Props) => {
       <Text as='b' ms='1.25rem' mt='0.5rem' fontSize='small' pointerEvents='none' position='absolute'>{props.title}</Text>
       {amount !== 0 && <BaseText top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}>{amount}</BaseText>}
       {amount === 0 && <Alert status='error' bg='transparent' pointerEvents='none'><Spacer /><AlertIcon /></Alert>}
-      {amount === 0 && <Image sx={{filter: 'brightness(0) invert(1)'}} opacity={'70%'} w='45%' top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} pointerEvents='none' position='absolute' src={skull} />}
+      {amount === 0 && <Image opacity={'70%'} w='5.5rem' fit='scale-down' top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'} pointerEvents='none' position='absolute' src={skull} />}
     </Box>
   )
 }

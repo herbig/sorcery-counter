@@ -11,7 +11,6 @@ export const ThresholdRow = (props: Props) => {
 
     return (
         <Box {...props}>
-            <Divider />
             <Flex>
                 {/* preserve the enum order, not the prop ordering */}
                 {Object.values(Elem).map((element) => (
@@ -20,6 +19,7 @@ export const ThresholdRow = (props: Props) => {
                     ) : null
                 ))}
             </Flex>
+            <Divider />
         </Box>
     )
 }

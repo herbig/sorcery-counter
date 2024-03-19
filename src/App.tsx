@@ -4,16 +4,16 @@ import {
   ThemeConfig,
   extendTheme,
 } from "@chakra-ui/react"
-import { Elem } from "./components/Threshold";
+import { Elem } from "./components/rows/Threshold";
 import { useWakeLock } from 'react-screen-wake-lock';
 import { APPBAR_HEIGHT, AppBar } from "./components/AppBar";
 import { MdOutlineRefresh, MdSettings } from "react-icons/md";
-import { ThresholdRow } from "./components/ThresholdRow";
-import { ManaRow } from "./components/ManaRow";
-import { LifeRow } from "./components/LifeRow";
+import { ThresholdRow } from "./components/rows/ThresholdRow";
+import { ManaRow } from "./components/rows/ManaRow";
+import { LifeRow } from "./components/rows/LifeRow";
 import { CustomizeModal, UIConfig } from "./components/CustomizeModal";
 import { useEffect, useState } from "react";
-import { DiceRow } from "./components/DiceRow";
+import { DiceRow } from "./components/rows/DiceRow";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -79,7 +79,6 @@ export const App = () => {
         pb='1.25rem'
         flexDir='column'
         key={resetCount}
-        mt='-1px'
       >
         {uiConfig.showDice && <DiceRow />}
         {uiConfig.showLife && <LifeRow you={uiConfig.showYourLife} />}

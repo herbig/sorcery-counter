@@ -1,14 +1,21 @@
-import { Box, Center, IconButton } from "@chakra-ui/react";
+import { Image, Box, Center, IconButton, ImageProps } from "@chakra-ui/react";
 import { useState } from "react";
-import { BaseButton, BaseText } from "./Base";
+import { BaseButton, BaseText } from "../Base";
 import { MdOutlineRefresh } from "react-icons/md";
-import { PStone } from "./PStone";
+import pstone from "../../assets/pstone.png";
 
 interface Props {
   pstone: boolean;
 }
 
-export const Mana = (props: Props) => {
+const PStone = (props: ImageProps) => {
+  const [isChecked, setChecked] = useState<boolean>(false);
+  return (
+    <Image src={pstone} opacity={isChecked ? '90%' : '30%'} onClick={() => setChecked(!isChecked)} {...props} />
+  )
+}
+
+export const ManaRow = (props: Props) => {
     const [current, setCurrent] = useState<number>(0);
     const [max, setMax] = useState<number>(0);
     return (

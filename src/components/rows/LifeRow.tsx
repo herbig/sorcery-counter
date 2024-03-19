@@ -8,11 +8,11 @@ interface Props {
 export const LifeRow = (props: Props) => {
     return (
         <Box>
-            <Divider />
             <Flex>
                 {props.you && <Life title='Opponent' w='50%' />}
                 <Life title='Me' w={props.you ? '50%' : '100%'} />
             </Flex>
+            <Divider />
         </Box>
     )
 }

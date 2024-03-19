@@ -1,10 +1,10 @@
 import { Image, BoxProps, Box } from "@chakra-ui/react";
 import { useState } from "react";
-import air from "../assets/air.png"
-import earth from "../assets/earth.png"
-import fire from "../assets/fire.png"
-import water from "../assets/water.png"
-import { BaseButton, BaseText } from "./Base";
+import air from "../../assets/air.png"
+import earth from "../../assets/earth.png"
+import fire from "../../assets/fire.png"
+import water from "../../assets/water.png"
+import { BaseButton, BaseText } from "../Base";
 
 export enum Elem {
     EARTH, FIRE, WATER, AIR
