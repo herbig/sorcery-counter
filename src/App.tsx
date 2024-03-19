@@ -74,9 +74,12 @@ export const App = () => {
         h={`calc(100vh - ${APPBAR_HEIGHT})`}
         w="full" 
         maxW='30rem'
-        p='1.25rem'
+        ps='1.25rem'
+        pe='1.25rem'
+        pb='1.25rem'
         flexDir='column'
         key={resetCount}
+        mt='-1px'
       >
         {uiConfig.showDice && <DiceRow />}
         {uiConfig.showLife && <LifeRow you={uiConfig.showYourLife} />}

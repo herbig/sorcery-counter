@@ -1,5 +1,4 @@
-import { Box } from "@chakra-ui/react";
-import { RowTitle } from "./RowTitle";
+import { Box, Divider } from "@chakra-ui/react";
 import { Mana } from "./Mana";
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 export const ManaRow = (props: Props) => {
     return (
         <Box>
-            <RowTitle title='Mana Count' />
+            <Divider />
             <Mana pstone={props.pstone} />
         </Box>
     )

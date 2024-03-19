@@ -1,5 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
-import { RowTitle } from "./RowTitle";
+import { Box, Divider, Flex } from "@chakra-ui/react";
 import { Life } from "./Life";
 
 interface Props {
@@ -9,8 +8,8 @@ interface Props {
 export const LifeRow = (props: Props) => {
     return (
         <Box>
-            <RowTitle title='Life Total' />
-            <Flex h='9.5rem'>
+            <Divider />
+            <Flex>
                 {props.you && <Life title='Opponent' w='50%' />}
                 <Life title='Me' w={props.you ? '50%' : '100%'} />
             </Flex>

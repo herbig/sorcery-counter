@@ -1,6 +1,5 @@
-import { BoxProps, Box, Flex } from "@chakra-ui/react";
+import { BoxProps, Box, Flex, Divider } from "@chakra-ui/react";
 import { Threshold, Elem } from "./Threshold";
-import { RowTitle } from "./RowTitle";
 
 interface Props extends BoxProps {
     elems: Elem[];
@@ -12,8 +11,8 @@ export const ThresholdRow = (props: Props) => {
 
     return (
         <Box {...props}>
-            <RowTitle title='Threshold' />
-            <Flex h='9.5rem'>
+            <Divider />
+            <Flex>
                 {/* preserve the enum order, not the prop ordering */}
                 {Object.values(Elem).map((element) => (
                     props.elems.includes(element as Elem) ? (
