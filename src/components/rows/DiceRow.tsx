@@ -3,6 +3,7 @@ import { Image, BoxProps, HStack, ImageProps, IconButton, Box, Divider } from "@
 import d20 from "../../assets/d20.png"
 import d12 from "../../assets/d12.png"
 import d10 from "../../assets/d10.png"
+import d8 from "../../assets/d8.png"
 import d6 from "../../assets/d6.png"
 import d4 from "../../assets/d4.png"
 // @ts-ignore
@@ -15,6 +16,7 @@ const diceBox = new DiceBox(
   "#dice-box",
   {
     id: canvasId,
+    theme: 'smooth',
     // TODO there's an issue with the way the /counter redirect
     // works on fourcores.xyz, which requires hardcoding the
     // '/counter' path here.  Would be great to fix that...
@@ -39,7 +41,7 @@ diceBox.init().then(() => {
 
 const Die = (props: ImageProps) => {
     return (
-        <IconButton w='3.5rem' h='3.5rem' icon={<Image w='3rem' opacity={'70%'} {...props} />} aria-label='' variant='ghost' borderRadius='0' />
+        <IconButton w='3.8rem' h='3.8rem' icon={<Image w='2.4rem' opacity={'70%'} {...props} />} aria-label='' variant='ghost' borderRadius='0' />
     )
 }
 
@@ -49,15 +51,17 @@ export const DiceRow = (props: BoxProps) => {
       let color: string;
       switch(sides) {
         case 20:
-          color = '#BA4E49';
+          color = '#C23F1E';
           break;
         case 12:
           color = '#D9C547';
           break;  
-        // TODO d8 = #285FD1
         case 10:
           color = '#ffffff';
           break;
+        case 8:
+            color = '#285FD1';
+            break;
         case 6:
           color = '#AE2D40';
           break;
@@ -73,6 +77,7 @@ export const DiceRow = (props: BoxProps) => {
           <Die src={d20} onClick={() => rollDie(20)} />
           <Die src={d12} onClick={() => rollDie(12)} />
           <Die src={d10} onClick={() => rollDie(10)} />
+          <Die src={d8} onClick={() => rollDie(8)} />
           <Die src={d6} onClick={() => rollDie(6)} />
           <Die src={d4} onClick={() => rollDie(4)} />
       </HStack>
