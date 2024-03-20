@@ -4,7 +4,6 @@ import {
   ThemeConfig,
   extendTheme,
 } from "@chakra-ui/react"
-import { Elem } from "./components/rows/Threshold";
 import { useWakeLock } from 'react-screen-wake-lock';
 import { APPBAR_HEIGHT, AppBar } from "./components/AppBar";
 import { MdOutlineRefresh, MdSettings } from "react-icons/md";
@@ -14,6 +13,7 @@ import { LifeRow } from "./components/rows/LifeRow";
 import { CustomizeModal, UIConfig } from "./components/CustomizeModal";
 import { useEffect, useState } from "react";
 import { DiceRow } from "./components/rows/DiceRow";
+import { getStoredConfig, setStoredConfig } from "./storage";
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -34,13 +34,7 @@ export const App = () => {
   // a simple way to refresh components via the refresh button
   const [resetCount, setResetCount] = useState<number>(0);
 
-  const [uiConfig, setUIConfig] = useState<UIConfig>({
-    showDice: true,
-    showLife: true,
-    showYourLife: true,
-    elems: [Elem.EARTH, Elem.AIR, Elem.FIRE, Elem.WATER],
-    showPStone: true
-  });
+  const [uiConfig, setUIConfig] = useState<UIConfig>(getStoredConfig());
 
   const refresh = () => {
     setResetCount(current => current + 1);
@@ -93,6 +87,7 @@ export const App = () => {
         }} 
         onConfirmClick={(config) => {
           setUIConfig(config);
+          setStoredConfig(config);
           setShowConfig(false);
         }}
       />
