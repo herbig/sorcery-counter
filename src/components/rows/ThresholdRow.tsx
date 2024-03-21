@@ -13,7 +13,7 @@ export const ThresholdRow = (props: Props) => {
     return (
         <Box {...props}>
             <Flex>
-                <Text as='b' ms='1.25rem' mt='0.5rem' fontSize='small' pointerEvents='none' position='absolute'>{props.title}</Text>
+                <Text as='b' ms='1.25rem' mt='0.6rem' fontSize='medium' pointerEvents='none' position='absolute'>{props.title}</Text>
                 {/* preserve the enum order, not the prop ordering */}
                 {Object.values(Elem).map((element) => (
                     props.elems.includes(element as Elem) ? (
