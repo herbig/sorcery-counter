@@ -1,4 +1,4 @@
-import { Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Checkbox, VStack, Divider } from '@chakra-ui/react';
+import { Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Checkbox, VStack, Divider, SimpleGrid } from '@chakra-ui/react';
 import { Elem } from './rows/Threshold';
 import { useState } from 'react';
 
@@ -42,6 +42,7 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
               }}>
               Dice
             </Checkbox>
+            <Divider />
             <Checkbox
               isChecked={newConfig.showLife}
               onChange={(e) => {
@@ -66,6 +67,7 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
             }
             <Divider />
             <Text>Opponent's Threshold</Text>
+            <SimpleGrid columns={2} spacing='1rem'>
             <Checkbox 
               onChange={(e) => {
                 const oppElems = newConfig.oppElems.filter((el) => el !== Elem.EARTH);
@@ -106,8 +108,10 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
                 });
               }} 
             isChecked={newConfig.oppElems.includes(Elem.AIR)}>Air</Checkbox>
+            </SimpleGrid>
             <Divider />
             <Text>My Threshold</Text>
+            <SimpleGrid columns={2} spacing='1rem'>
             <Checkbox 
               onChange={(e) => {
                 const elems = newConfig.elems.filter((el) => el !== Elem.EARTH);
@@ -148,6 +152,7 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
                 });
               }} 
             isChecked={newConfig.elems.includes(Elem.AIR)}>Air</Checkbox>
+            </SimpleGrid>
             <Divider />
             <Checkbox 
               isChecked={newConfig.showPStone}

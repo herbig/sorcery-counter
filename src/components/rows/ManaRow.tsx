@@ -27,7 +27,7 @@ export const ManaRow = (props: Props) => {
         <Center h='100%'>
           <BaseText>{current} / {max}</BaseText>
         </Center>
-        <IconButton h='3rem' w='3rem' ms='3%' onClick={() => {setCurrent(max)}} bottom='65%' aria-label='Refresh Mana' icon={<MdOutlineRefresh />} />
+        <IconButton h='3.5rem' w='3.5rem' ms='3%' onClick={() => {setCurrent(max)}} bottom='69%' aria-label='Refresh Mana' icon={<MdOutlineRefresh />} />
         {props.pstone && <PStone position='absolute' bottom='28%' left='80%' w='17%' />}
       </Box>
     )
