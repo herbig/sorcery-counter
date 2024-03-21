@@ -11,11 +11,11 @@ const defaultConfig = {
 };
 
 export function setStoredConfig(config: UIConfig) {
-    localStorage.setItem('ui-config', JSON.stringify(config));
+    localStorage.setItem('ui-config-2', JSON.stringify(config));
 }
 
 export function getStoredConfig(): UIConfig {
-    const config = localStorage.getItem('ui-config');
+    const config = localStorage.getItem('ui-config-2');
     if (config) {
         return JSON.parse(config);
     } else {
