@@ -9,8 +9,8 @@ export const LifeRow = (props: Props) => {
     return (
         <Box>
             <Flex>
-                {props.you && <Life title='Opponent' w='50%' />}
-                <Life title='Me' w={props.you ? '50%' : '100%'} />
+                {props.you && <Life title='Opponent ↑' w='50%' />}
+                <Life title={props.you ? 'Me ↓' : ''} w={props.you ? '50%' : '100%'} />
             </Flex>
             <Divider />
         </Box>

@@ -6,7 +6,8 @@ const defaultConfig = {
     showLife: true,
     showYourLife: true,
     elems: [Elem.EARTH, Elem.AIR, Elem.FIRE, Elem.WATER],
-    showPStone: true
+    showPStone: true,
+    oppElems: [],
 };
 
 export function setStoredConfig(config: UIConfig) {

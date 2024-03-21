@@ -76,7 +76,8 @@ export const App = () => {
       >
         {uiConfig.showDice && <DiceRow />}
         {uiConfig.showLife && <LifeRow you={uiConfig.showYourLife} />}
-        <ThresholdRow elems={uiConfig.elems} />
+        {uiConfig.oppElems.length > 0 && <ThresholdRow title='Opponent ↑' elems={uiConfig.oppElems} />}
+        {uiConfig.elems.length > 0 && <ThresholdRow title={uiConfig.oppElems.length > 0 ? 'Me ↓' : ''} elems={uiConfig.elems} />}
         <ManaRow pstone={uiConfig.showPStone} />
       </Flex>
       <CustomizeModal 

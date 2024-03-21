@@ -1,4 +1,4 @@
-import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Checkbox, VStack, Divider } from '@chakra-ui/react';
+import { Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Checkbox, VStack, Divider } from '@chakra-ui/react';
 import { Elem } from './rows/Threshold';
 import { useState } from 'react';
 
@@ -7,6 +7,7 @@ export interface UIConfig {
   showLife: boolean;
   showYourLife: boolean;
   elems: Elem[];
+  oppElems: Elem[];
   showPStone: boolean;
 }
 
@@ -64,6 +65,49 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
               </Checkbox>
             }
             <Divider />
+            <Text>Opponent's Threshold</Text>
+            <Checkbox 
+              onChange={(e) => {
+                const oppElems = newConfig.oppElems.filter((el) => el !== Elem.EARTH);
+                if (e.target.checked) oppElems.push(Elem.EARTH);
+                setNewConfig({
+                  ...newConfig,
+                  oppElems: oppElems,
+                });
+              }} 
+            isChecked={newConfig.oppElems.includes(Elem.EARTH)}>Earth</Checkbox>
+          <Checkbox 
+            onChange={(e) => {
+              const oppElems = newConfig.oppElems.filter((el) => el !== Elem.FIRE);
+              if (e.target.checked) oppElems.push(Elem.FIRE);
+              setNewConfig({
+                ...newConfig,
+                oppElems: oppElems,
+              });
+            }} 
+            isChecked={newConfig.oppElems.includes(Elem.FIRE)}>Fire</Checkbox>
+          <Checkbox 
+            onChange={(e) => {
+              const oppElems = newConfig.oppElems.filter((el) => el !== Elem.WATER);
+              if (e.target.checked) oppElems.push(Elem.WATER);
+              setNewConfig({
+                ...newConfig,
+                oppElems: oppElems,
+              });
+            }} 
+            isChecked={newConfig.oppElems.includes(Elem.WATER)}>Water</Checkbox>
+            <Checkbox 
+              onChange={(e) => {
+                const oppElems = newConfig.oppElems.filter((el) => el !== Elem.AIR);
+                if (e.target.checked) oppElems.push(Elem.AIR);
+                setNewConfig({
+                  ...newConfig,
+                  oppElems: oppElems,
+                });
+              }} 
+            isChecked={newConfig.oppElems.includes(Elem.AIR)}>Air</Checkbox>
+            <Divider />
+            <Text>My Threshold</Text>
             <Checkbox 
               onChange={(e) => {
                 const elems = newConfig.elems.filter((el) => el !== Elem.EARTH);
@@ -73,7 +117,7 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
                   elems: elems,
                 });
               }} 
-            isChecked={newConfig.elems.includes(Elem.EARTH)}>Earth Threshold</Checkbox>
+            isChecked={newConfig.elems.includes(Elem.EARTH)}>Earth</Checkbox>
           <Checkbox 
             onChange={(e) => {
               const elems = newConfig.elems.filter((el) => el !== Elem.FIRE);
@@ -83,7 +127,7 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
                 elems: elems,
               });
             }} 
-            isChecked={newConfig.elems.includes(Elem.FIRE)}>Fire Threshold</Checkbox>
+            isChecked={newConfig.elems.includes(Elem.FIRE)}>Fire</Checkbox>
           <Checkbox 
             onChange={(e) => {
               const elems = newConfig.elems.filter((el) => el !== Elem.WATER);
@@ -93,7 +137,7 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
                 elems: elems,
               });
             }} 
-            isChecked={newConfig.elems.includes(Elem.WATER)}>Water Threshold</Checkbox>
+            isChecked={newConfig.elems.includes(Elem.WATER)}>Water</Checkbox>
             <Checkbox 
               onChange={(e) => {
                 const elems = newConfig.elems.filter((el) => el !== Elem.AIR);
@@ -103,7 +147,7 @@ export function CustomizeModal({ uiConfig, shown, onCancelClick, onConfirmClick 
                   elems: elems,
                 });
               }} 
-            isChecked={newConfig.elems.includes(Elem.AIR)}>Air Threshold</Checkbox>
+            isChecked={newConfig.elems.includes(Elem.AIR)}>Air</Checkbox>
             <Divider />
             <Checkbox 
               isChecked={newConfig.showPStone}

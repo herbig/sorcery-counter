@@ -38,6 +38,8 @@ diceBox.init().then(() => {
     }
   });
 });
+// TODO toast die result
+// diceBox.onDieComplete = (dieResult: any) => console.log('die result', dieResult)
 
 const Die = (props: ImageProps) => {
     return (
