@@ -1,5 +1,5 @@
 import "../../styles.css";
-import { Image, BoxProps, HStack, ImageProps, IconButton, Box, Divider } from "@chakra-ui/react";
+import { Image, BoxProps, HStack, ImageProps, IconButton, Box, Divider, Modal, ModalContent, Center, ModalOverlay } from "@chakra-ui/react";
 import d20 from "../../assets/d20.png"
 import d12 from "../../assets/d12.png"
 import d10 from "../../assets/d10.png"
@@ -8,6 +8,8 @@ import d6 from "../../assets/d6.png"
 import d4 from "../../assets/d4.png"
 // @ts-ignore
 import DiceBox from "@3d-dice/dice-box";
+import { useEffect, useState } from "react";
+import { BaseText } from "../Base";
 
 const canvasId = 'dice-canvas';
 const diceBox = new DiceBox(
@@ -38,8 +40,21 @@ diceBox.init().then(() => {
     }
   });
 });
-// TODO toast die result
-// diceBox.onDieComplete = (dieResult: any) => console.log('die result', dieResult)
+
+export interface DieResultModalProps {
+  result: number | undefined;
+}
+
+function DieResultModal({ result }: DieResultModalProps) {
+  return (
+    <Modal isOpen={!!result} onClose={() => {}}>
+      <ModalOverlay bg='blackAlpha.300' />
+      <ModalContent bg="transparent" boxShadow="none">
+        <Center pt='12rem'><BaseText as='b' fontSize='9rem'>{result}</BaseText></Center>
+      </ModalContent>
+    </Modal>
+  )
+}
 
 const Die = (props: ImageProps) => {
     return (
@@ -48,6 +63,20 @@ const Die = (props: ImageProps) => {
 }
 
 export const DiceRow = (props: BoxProps) => {
+
+  const [dieResult, setDieResult] = useState<number>();
+
+  useEffect(() => {
+    diceBox.onDieComplete = (dieResult: any) => {
+      setDieResult(dieResult.value);
+      setTimeout(() => {
+        setDieResult(undefined);
+      }, 1000); // 1 second
+    };
+    return () => {
+      diceBox.onDieComplete = null;
+    };
+  }, []); // only once on mount
 
     const rollDie = (sides: number) => {
       let color: string;
@@ -84,6 +113,7 @@ export const DiceRow = (props: BoxProps) => {
           <Die src={d4} onClick={() => rollDie(4)} />
       </HStack>
       <Divider />
+      <DieResultModal result={dieResult} />
     </Box>
   )
 }
